@@ -16,7 +16,7 @@
     }
 
     .u_fixed {
-      position: fixed !important;
+      position: fixed;
       top: 0;
       width: 50%;
 
@@ -68,6 +68,26 @@
 
       }
 
+      @media all and (max-width: 768px) {
+        .left-container {
+          -webkit-flex: 1 100%;
+          flex: 1 100%;
+        }
+        .right-container {
+          -webkit-flex: 1 100%;
+          flex: 1 100%;
+        }
+        .u_fixed {
+          position: relative;
+          width: 100%;
+        }
+        .img-container.u_fixed {
+          width: 100%;
+        }
+        .bang-img {
+          height: 50vh;
+        }
+      }
 
   </style>
 </head>
