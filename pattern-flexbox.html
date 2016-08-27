@@ -271,10 +271,8 @@
 var prevDisplace = [];
 
 $(window).scroll(function() {
-  console.log('scroll()');
-  $('section').each(function(index, value) {
 
-  console.log('section.each(' + index + ')');
+  $('section').each(function(index, value) {
 
   // get the offsets. Notice we are detecting the shift
   // of the top of the section relative to the window.
@@ -282,32 +280,30 @@ $(window).scroll(function() {
   var section_top = $(this).offset().top;
   var displace = window_top - section_top;
 
-  console.log('\t window_top:' + window_top);
-  console.log('\t section_top:' + section_top);
-  console.log('\t displace:' + displace);
-
   // get the children. TODO: Optimise and eliminate
   var objLeft = $(this).children('.left-container');
   var objRight = $(this).children('.right-container');
-  var objImage = objLeft.children('.img-container');
+  var objLeftImage = objLeft.children('.img-container');
+  var objRightImage = objRight.children('.img-container');
 
-  // get some sizes and values
-  var rightSideHeight = objRight.outerHeight(true);
-  var leftSideHeight = objLeft.outerHeight(true);
-  var largerHeight = Math.max(rightSideHeight,leftSideHeight);
-  console.log('\t rightSideHeight:' + rightSideHeight);
-  console.log('\t leftSideHeight: ' + leftSideHeight);
-  console.log('\t largerHeight:   ' + largerHeight);
+  // get some sizes and values. NO need to identify which
+  // side is taller, b/c with flexbox, they are the same
+  var height = objRight.outerHeight(true);
 
   // condition the scroll, would a switch be better?
+  // also consider testing to see if objLeftImage.length and
+  // objRightImage.length are >0 so we dont' try settign an
+  // empty object.
   if(displace < 0) {
     // the section is below the top of visible vp, so it appears
     // inline and scrolls normally.
-    objImage.removeClass('u_fixed');
+    objLeftImage.removeClass('u_fixed');
+    objRightImage.removeClass('u_fixed');
   }
-  else if (displace < largerHeight) {
+  else if (displace < height) {
     // the section is at the top and the left panel is locked.
-    objImage.addClass('u_fixed');
+    objLeftImage.addClass('u_fixed');
+    objRightImage.addClass('u_fixed');
     prevDisplace[index]=displace;
   }
   else {
