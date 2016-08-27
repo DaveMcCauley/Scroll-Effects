@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+  <style>
+    body,
+    div,
+    html,
+    h3 {
+      margin: 0;
+      padding: 0;
+    }
+
+
+    .u_fixed {
+      position: fixed !important;
+      top: 0;
+      width: 25%;
+      opacity: .25;
+    }
+
+    .flexbox-container-image {
+      height: 100vh;
+      width: 50%;
+      background: #ff0;
+    }
+
+    .flexbox-container {
+      display: -ms-flex;
+      display: -webkit-flex;
+      display: flex;
+      background: #aaa;
+    }
+
+    .flexbox-container > div {
+      width: 50%;
+      padding: 0;
+    }
+
+    .left {
+      background: #0f0;
+    }
+
+    .right {
+      background: #f00;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="flexbox-container">
+    <div class="left">
+      <img class="flexbox-container-image" src="assets/img/sample-two.jpg">
+    </div>
+    <div class="right">
+      <h3>Column 2.1</h3>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+    </div>
+</div>
+
+<div class="flexbox-container">
+    <div class="left">
+      <img class="flexbox-container-image" src="assets/img/sample-two.jpg">
+    </div>
+    <div class="right">
+      <h3>Column 2.2</h3>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+    </div>
+</div>
+
+<div class="flexbox-container">
+    <div class="left"><h3 class="flexbox-container-image">Column 1.3</h3></div>
+    <div class="right">
+      <h3>Column 2.3</h3>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+    </div>
+</div>
+
+<div class="flexbox-container">
+    <div class="left"><h3 class="flexbox-container-image">Column 1.4</h3></div>
+    <div class="right">
+      <h3>Column 2.4</h3>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+      <p>Ungabunga</p>
+    </div>
+</div>
+
+</body>
+
+<script>
+
+// global to track the position of each section's displacement
+var prevDisplace = [];
+
+$(window).scroll(function() {
+  console.log('scroll()');
+  $('.flexbox-container').each(function(index, value) {
+
+  console.log('section.each(' + index + ')');
+
+  // get the offsets. Notice we are detecting the shift
+  // of the top of the section relative to the window.
+  var window_top = $(window).scrollTop();
+  var section_top = $(this).offset().top;
+  var displace = window_top - section_top;
+
+  console.log('\t window_top:' + window_top);
+  console.log('\t section_top:' + section_top);
+  console.log('\t displace:' + displace);
+
+  // get the children. TODO: Optimise and eliminate
+  var objLeft = $(this).children('.left');
+  var objRight = $(this).children('.right');
+  var objImage = objLeft.children('.flexbox-container-image');
+
+  // get some sizes and values
+  var rightSideHeight = objRight.outerHeight(true);
+  console.log('\t rightSideHeight:' + rightSideHeight);
+
+  // condition the scroll, would a switch be better?
+  if(displace < 0) {
+    // the section is below the top of visible vp, so it appears
+    // inline and scrolls normally.
+    objImage.removeClass('u_fixed');
+  }
+  else if (displace < rightSideHeight) {
+    // the section is at the top and the left panel is locked.
+    objImage.addClass('u_fixed');
+    prevDisplace[index]=displace;
+  }
+  else {
+    // the section is off the top.
+    // todo: fade?
+  }
+
+  });
+});
+
+
+</script>
+
+</html>

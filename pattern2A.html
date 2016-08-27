@@ -10,22 +10,23 @@
     html {
       margin: 0;
     }
-    
+
     .u_fixed {
       position: fixed !important;
       top: 0;
+      width: 50%;
     }
-    
+
     section {
       width: 100%;
       clear: both;
     }
-    
+
     article {
       position: relative;
       text-align: center;
     }
-    
+
     .left-half {
       background: transparent;
       float: left;
@@ -35,26 +36,32 @@
       postition: realtive;
       z-index: -10;
     }
-    
+
+    .left-img.u_fixed {
+      width: 50%;
+      overflow: hidden;
+    }
+
     .right-half {
       background-color: #aaa;
       float: left;
       width: 50%;
     }
-    
+
     .left-img {
       opacity: 1.0;
       overflow: hidden;
-      width: 50vw;
       z-index: -1;
-      
+
     }
 
     .left-img-img {
       overflow: hidden;
       position: relative;
-      width: 50vw;
-      
+
+      min-width: 100%;
+      height: 100vh;
+
     }
 
   </style>
@@ -160,7 +167,7 @@
     <p>Unga bunga</p>
     <p>Unga bunga</p>
     <p>Unga bunga</p>
-  
+
   </div>
 </section>
 
@@ -218,28 +225,28 @@ var prevDisplace = [];
 $(window).scroll(function() {
   console.log('scroll()');
   $('section').each(function(index, value) {
-  
+
   console.log('section.each(' + index + ')');
-  
+
   // get the offsets. Notice we are detecting the shift
-  // of the top of the section relative to the window. 
+  // of the top of the section relative to the window.
   var window_top = $(window).scrollTop();
   var section_top = $(this).offset().top;
   var displace = window_top - section_top;
-  
+
   console.log('\t window_top:' + window_top);
   console.log('\t section_top:' + section_top);
   console.log('\t displace:' + displace);
-  
-  // get the children. TODO: Optimise and eliminate 
+
+  // get the children. TODO: Optimise and eliminate
   var objLeft = $(this).children('.left-half');
   var objRight = $(this).children('.right-half');
   var objImage = objLeft.children('.left-img');
-  
+
   // get some sizes and values
   var rightSideHeight = objRight.outerHeight(true);
   console.log('\t rightSideHeight:' + rightSideHeight);
-  
+
   // condition the scroll, would a switch be better?
   if(displace < 0) {
     // the section is below the top of visible vp, so it appears
@@ -255,7 +262,7 @@ $(window).scroll(function() {
     // the section is off the top.
     // todo: fade?
   }
-  
+
   });
 });
 
