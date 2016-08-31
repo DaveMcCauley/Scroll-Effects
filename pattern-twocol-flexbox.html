@@ -296,15 +296,11 @@ $(window).scroll(function() {
 
   // get the offsets. Notice we are detecting the shift
   // of the top of the section relative to the window.
-  var window_top = $(window).scrollTop();
-  var section_top = $(this).offset().top;
-  var displace = window_top - section_top;
+  var displace = $(window).scrollTop() - $(this).offset().top;
 
   // get the children. TODO: Optimise and eliminate
   var objLeft = $(this).children('.left-container');
   var objRight = $(this).children('.right-container');
-  var objLeftImage = objLeft.children('.img-container');
-  var objRightImage = objRight.children('.img-container');
 
   // get some sizes and values. NO need to identify which
   // side is taller, b/c with flexbox, they are the same
@@ -317,13 +313,13 @@ $(window).scroll(function() {
   if(displace < 0) {
     // the section is below the top of visible vp, so it appears
     // inline and scrolls normally.
-    objLeftImage.removeClass('u_fixed');
-    objRightImage.removeClass('u_fixed');
+    objLeft.children('.img-container').removeClass('u_fixed');
+    objRight.children('.img-container').removeClass('u_fixed');
   }
   else if (displace < height) {
     // the section is at the top and the left panel is locked.
-    objLeftImage.addClass('u_fixed');
-    objRightImage.addClass('u_fixed');
+    objLeft.children('.img-container').addClass('u_fixed');
+    objRight.children('.img-container').addClass('u_fixed');
     prevDisplace[index]=displace;
   }
   else {
