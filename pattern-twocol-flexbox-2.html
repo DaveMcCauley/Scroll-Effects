@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+  <style>
+    body,
+    div,
+    html {
+      margin: 0;
+    }
+    
+    .u_fixed {
+      position: fixed !important;
+      top: 0;
+    }
+    
+    * {
+  margin: 0;
+}
+.fp-section {
+  align-items: flex-start;
+  background: #800000 none repeat scroll 0 0;
+  border: 5px solid pink;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 300px;
+}
+.section-panel-fix {
+  align-items: center;
+  display:flex;
+  justify-content: center;
+  background: #C83737;
+  border: 5px solid gray;
+  width: 50%;
+  height: 50px;
+  border-radius: 5px;
+  position: relative; 
+  overflow: hidden;
+}
+.panel-center {
+  align-items: center;
+  display:flex;
+  justify-content: center;
+  background: #ddd;
+  border: 5px solid orange;
+  width: 50%;
+  height: 40px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.section-panel-scroll {
+  align-items: flex-start;
+  display: flex;
+  justify-content: flex-start;
+  background: #ddd;
+  border: 5px solid red;
+  width: 50%;
+  min-height: 50px;
+  border-radius: 5px;
+  position: relative;
+  overflow: visible;
+  flex-direction: column;
+}
+
+.panel-top {
+  border: 3px solid green;  
+}
+
+.panel-overlay {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); 
+    color: #ddd;
+    text-shadow: 1px 1px 0 #000;
+    font-family: "arial", sans-serif;
+    font-weight: 700;
+    text-align: center;
+    border: solid 1px orange;
+    width: 100%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="fp-section">
+  <div class="section-panel-fix">
+    <img src="http://placekitten.com/120/120"></img>
+    <div class="panel-overlay">Some Text</div>
+  </div>
+  <div class="section-panel-scroll">
+    <div class="panel-top">
+      <div>this is an incredibly long headline that 
+           must cause the parent box to expan if it 
+           is larger than the box containing it, 
+           otherwise the parent box just takes the 
+           min-height propoerty and that is the height.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- section -->
+<div class="fp-section">
+  <div class="section-panel-fix">
+    <div class="panel-center">
+      <h2>headline</h2>
+      <p>another</p>
+    </div>
+  </div>
+  <div class="section-panel-scroll">
+    <div class="panel-top">
+      <p>this</p>
+    </div>
+  </div>
+</div>
+
+<!-- section -->
+<div class="fp-section">
+   <div class="section-panel-scroll">
+    <div class="panel-top">
+      <div>
+        <h1>this is an incredibly long headline that must fit into</h1>
+      </div>
+    </div>
+  </div>
+  <div class="section-panel-fix">
+    <div class="panel-center">
+      <p>headline</p>
+    </div>
+  </div>
+</div>
+
+<!-- section -->
+<div class="fp-section">
+  <div class="section-panel-fix">
+    <div class="panel-center">
+      <div>headline</div>
+      <div class="panel-overlay">another</div>
+    </div>
+  </div>
+  <div class="section-panel-scroll">
+    <div class="panel-top">
+      <p>this</p>
+      <p>and that</p>
+    </div>
+  </div>
+</div>
+
+>/body>
