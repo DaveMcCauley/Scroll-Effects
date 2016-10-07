@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>Default styles</title>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    
+  <style type="text/css">
+
+    /* Typography */
+
+    html {
+      font-size: 62.5%;
+    }
+    
+    .bodytext p {
+      font-size: 1.8rem; /* 18px */
+    }
+
+    .sidenote {
+      font-size: 1.2rem; /* 12px*/
+    }
+
+    .fixedbox {
+      font-size: 18px;
+      padding: 9px;
+      border: solid 1px rgb(200, 200, 200);
+      border-radius: 6px;
+      display: inline-block;
+      background: rgb(248, 220, 220);
+    }
+    
+    .fixedpx {
+      font-size: 18px;
+    }
+    
+    .embox {
+      font-size: 1.8rem;
+      padding: 0.3333em;
+      border: solid 1px rgb(200,200,200);
+      border-radius: 0.3333em;
+      display: inline-block;
+      background: rgb(240,240,240);
+    }
+    
+    .embox.mod-large {
+      font-size: 64px;
+      
+    }
+    
+    .fixedbox.mod-large {
+      font-size: 64px;
+    }
+    
+    .embox.mod-small {
+      font-size: 8px;
+    }
+    
+    .fixedbox.mod-small {
+      font-size: 8px;
+    }
+    
+    .embox.mod-huge {
+      font-size: 12.8rem;
+    }
+    
+    .fixedbox.mod-huge {
+        font-size: 128px;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="bodytext">
+      <p>This is the main body of text wrapping over a few lines. It has some 
+        <code>monospaced text</code> to check  consistency.
+      </p>	
+    </div>
+
+    <p class="sidenote">
+      Default text size and line-height.
+    </p>
+    
+    <p class="fixedpx">
+      Fixed at 18px, lets check the resizing.
+    </p>
+    
+    <div class="fixedbox">
+      Fixedbox Test
+    </div>
+    
+    <div class="embox">
+      Embox test
+    </div>
+    
+    <div class="fixedbox mod-large">
+      Large Fixedbox Test
+    </div>
+    
+    <div class="embox mod-large">
+      Large Embox test
+    </div>
+    
+    <div class="fixedbox mod-small">
+      Small Fixedbox test
+    </div>
+    
+    <div class="embox mod-small">
+      Small Embox test
+    
+    </div>
+        <div class="fixedbox mod-huge">
+      Huge Fixedbox test
+    </div>
+    
+    <div class="embox mod-huge">
+      Huge Embox test
+    </div>
+    
+  </div>
+</body>
+
+</html>
